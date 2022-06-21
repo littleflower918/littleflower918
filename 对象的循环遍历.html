@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         var container = {
+        a : "111",
+        b : "222",
+        c : "333",
+        hobby :{
+            dance:"跳舞",
+            sing:"唱歌"
+        },
+        "favorite-idol" :["段星星","孙滢皓"],
+        sayHello : function(){
+            console.log("大家好我们是teamhunter");
+        }
+    };
+    for( var key in container){
+        // console.log("对象cntainer的属性"+ key + "的值是" + container[key]);
+        // console.log("我是container11111" +container);
+        console.log("我是Key: " + key);
+        // console.log("我是container[key]33333" + container[key]);
+    };
+    console.log(container);
+    console.log("我是container11111" +JSON.stringify(container));
+
+    </script>
+</body>
+</html>

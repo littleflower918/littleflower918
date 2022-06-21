@@ -1,0 +1,18 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+
+    // "type": "pwa-msedge" 表示打开 edge 浏览器。chrome 浏览器用 "pwa-chrome" 表示。
+
+
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "pwa-msedge",
+            "request": "launch",
+            "name": "Open js的深浅克隆.html",
+            "file": "e:\\webproject\\jen_2022_frontend_study\\js的深浅克隆.html"
+        }
+    ]
+}
