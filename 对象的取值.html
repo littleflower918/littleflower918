@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <b>111111</b>
+    <div>111111</div>
+    
+    
+</body>
+<script>
+    var container = {
+        a : "111",
+        b : "222",
+        c : "333",
+        hobby :{
+            dance:"跳舞",
+            sing:"唱歌"
+        },
+        "favorite-idol" :["段星星","孙滢皓"],
+        sayHello : function(){
+            console.log("大家好我们是teamhunter");
+        }
+    };
+    container.b = "999"
+    container.d = "5555"
+   delete container.c;
+   console.log(container.hobby.dance);
+   container.sayHello()
+
+    // console.log(container.hobby);
+    // console.log(container["favorite-idol"]);
+
+</script>
+</html>
