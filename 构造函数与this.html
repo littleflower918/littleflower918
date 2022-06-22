@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //相当于给水果定了一个模板，每个水果都要传入一下的属性
+        function Fruit(name, smell, color){
+            this.name = name;
+            this.smell = smell;
+            this.color = color;
+        }
+        function Pie(name, taste, color){
+            this.name = name;
+            this.taste = taste;
+            this.color = color;
+        }
+        //再传入的时候，通过new + 你要使用的【对象模板】，直接通过传值，把值输入进去就好了。
+        var apple = new Fruit("苹果","香甜","红色");
+        var apple1 = new Pie("苹果222","甜死了","黄色")
+        console.log(apple);
+        console.log(apple1);
+
+        //构造函数的用法与意义：https://www.jianshu.com/p/7e21e23ffba9
+
+    </script>
+</body>
+</html>
