@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //需求，传入1.01，2，两者相乘，结果为2.02
+        function add(num01,num02){
+        // 一、把传入的浮点数转换成字符串
+            num01 = JSON.stringify(num01);
+            num02 = num02.toString();
+        //    console.log(num01_str,num02_str);
+        //    console.log(typeof(num01_str))
+        
+        //二、 获取他们的小数位并赋值给a,b,注意：如果传入的是整数，就没有小数位，
+
+        if(num01.indexOf('.') != -1){
+            var a = num01.split('.')[1].length
+
+        }else{
+            a = 0; 
+        };
+
+        if(num02.indexOf('.') != -1){
+            var b = num02.split('.')[1].length
+
+        }else{
+            b = 0; 
+        }
+            console.log(a,b);
+        //比较谁的小数位更大【这里可以使用三元运算】
+
+            // var beishu;
+            // if(a<b){
+            //     beishu = b-a
+            // }else{
+            //     beishu = a-b
+            // };
+
+            var bigger = (a > b) ? a : b;
+            var smaller = (a < b) ? a : b;
+        //计算需要补的0 的位数
+            var zerocount = bigger-smaller;
+
+            //去小数点：
+                //小鼠去掉小数点肯定比整数大（因为位数多
+                //两个数据都去掉小数点之后，给小的补上 位数差的 0 ，比如位数差是2 就不上两个 0 
+                //注意这里要用字符串！不然汇报replace方法undefined
+            num01 = num01.replace(".","");
+            num02 = num02.replace(".","");
+            // document.write(typeof(num01))
+           
+            if(a == smaller){
+                for(i=0 ;i<zerocount;i++)
+                    num01 = num01 + "0"
+            }else{
+                for(i=0 ;i<zerocount;i++)
+                    num02 = num01 + "0"
+            }
+            //到这一步不管传如的是什么，都已经化成整数了，可以开始计算了
+            // num01 = JSON.parse(num01)
+            // document.write('num01:' + num01)
+            // document.write('num01的类型:' + typeof(num01))
+
+            var sum = parseInt(num01) + parseInt(num02)
+            var beishu = 1;
+            for(var i = 0;i < bigger ; i++){
+                beishu = beishu * 10;
+
+            }
+            sum = sum/beishu;
+            return sum ;
+        }
+        alert(add(1.001,2.002));
+    </script>
+</body>
+</html>

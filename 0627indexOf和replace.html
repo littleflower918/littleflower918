@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // alert(1.001*1000)乘法也出现了精度丢失
+         
+        function add(num01,num02){
+            //两种转换成字符串的形式
+            num01 = JSON.stringify(num01)
+            num02 = num02.toString()
+
+            //拿到小数点后的位数。split方法
+            // num01_arr = num01.split(".")
+            // num02_arr = num02.split(".")
+
+            // a = num01_arr[1].length;
+            // b = num02_arr[1].length;
+          var a,b;
+            if(num01.indexOf(".") != -1){
+                a =  num01.split(".")[1].length;
+            }else{
+                a = 0
+            };
+
+            if(num02.indexOf(".") != -1){
+                b =  num02.split(".")[1].length;
+            }else{
+                b = 0
+            }
+
+
+
+
+            document.write("a:" + a)
+            document.write("b:" +b)
+           //判断哪个位数大就,按大的位数来乘，把打的位数的值 赋值给 max
+
+           var max = a;
+           if(a<b){ max = b; }
+         
+           var beishu = 1;
+           for(var i = 0; i<max; i++){
+                beishu = beishu * 10;
+           }
+           document.write("出循环后倍数的值：" + beishu)
+           num01 = num01 *beishu
+           num02 = num02 *beishu
+
+           console.log(num01,num02);
+
+           var sum = (num01 + num02 )/beishu;
+           return sum;
+        }
+        alert(add(1.001,2.002))
+       
+    </script>
+</body>
+</html>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //split函数，可以通过某种规则 或者标记符号 对字符串进行分隔，会返回 【字符串的数组】
+        var num01 = "0.01";
+        //把字符串0.01  以“.”为分隔 ，返回成数组
+        var num01_arr = num01.split(".")
+        console.log(JSON.stringify(num01_arr))
+        //返回的结果是：["0","01"]
+
+        //然后要去拿到返回的数组的第二位
+        var num02_arr = num01_arr[1];
+        console.log("length:" + num02_arr.length);
+    </script>
+</body>
+</html>
