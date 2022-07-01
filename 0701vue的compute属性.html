@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+</head>
+<body>
+    <div id="count">
+       
+    </div>
+    <script>
+        var app = new Vue({
+            el:'#count',
+            data:{
+            
+            },
+            methods:{
+              
+            },
+            computed:{
+                payment:function(){
+                    var tody = new Date();
+                    var month = tody.getMonth()+1;
+                    var day = today.getDate();
+
+                    var rebate = 0;
+                    if(month==11 && day==11){
+                        if(this.price>=400){
+                            rebate = 150;
+                        }else if(this.price >=200){
+                            rebate = 50;
+                        }
+                    }
+                    return this.price*this.discount - rebate;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

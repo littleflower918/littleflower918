@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script type="text/javascript" src="./defaultBtn.js"></script>
+
+    <style>
+        .progress{
+            display: inline-block;
+            background-color: red;
+            width: 0px;
+            height: 18px;
+        }
+        .primary {background: #409eff;}
+        .danger {background: #f56c6c;}
+        .success {background: #67c23a;}
+        .warning {background: #e6a23c;}
+    </style>
+</head>
+<body>
+    <div id="app">
+       今天是【不过滤版本】：{{today}}
+       <br>
+       今天是【过滤器版】：{{today | dateFormate }}
+       <br>
+       <!-- <span v-html="today|boxStyle|dateFormate"></span> -->
+        <span v-html="$options.filters.dateFormate(today)"></span>
+        <br>3+
+        <span v-html="$options.filters.boxStyle($options.filters.dateFormate(today))"></span>
+    </div>
+    <script>
+        var app = new Vue({
+            el:'#app',
+            data:{
+              today:new Date(),
+
+            },
+            watch:{
+              
+            },
+            methods:{
+              
+              
+            },
+            computed:{
+               
+            },
+            filters:{
+                dateFormate : function(val){
+                    return val.getFullYear() + '-' + (val.getMonth() +1) + '-' + val.getDate();
+                },
+                boxStyle : function(val){
+                    return "<span style='display: inline-block; padding: 6px 10px; background-color: pink; ''>"+ val + "</span>"
+
+                }
+            }
+        })
+    </script>
+</body>
+</html>

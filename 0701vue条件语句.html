@@ -27,10 +27,23 @@
             </td>
         </tr>
         <tr>
+            <td>请选择身份：</td>
+            <td>
+               <select v-model="role">
+                <!-- <option value="1">dancer</option>
+                <option value="2">vocal</option> -->
+                    <option v-for="item,index in roleList"  :value="item.value">{{index+1}}.{{item.label}}</option>
+               </select>
+            </td>
+        </tr>
+        <tr>
             <td @click="modelClick" colspan="2" align="right">
                 <!-- v-text的写法比双大括号：{{errMsg}}的写法好，如果浏览器网速慢，会看到双括号的 渲染效果{{}} -->
-                <span style="color: red;" v-text="errMsg"></span>
-                <input v-if="!isLogining" type="submit" @click.once="btnClick" value="登录">
+                <span style='color: red;' v-text='errMsg'></span>
+
+                <!-- <input v-if='!isLogining' type='submit' @click.once='btnClick' value='登录' style='background: deepskyblue; color: #fff; border: none;padding: 2px 10px;border-radius: 10px; margin: 2px 6px;'> -->
+                
+                <cool-btn></cool-btn>
                 <input v-if="isLogining" type="submit"  value="登录中...." disabled>
             </td>
         </tr>
@@ -45,9 +58,16 @@
                 isLogining: false,//未登录状态就是false,登录上了就是 true
                 username:'段星星',
                 password:'980110',
+                // 这里的参数都是vue的参数
                 errMsg :'',
                 // 新增一个要修改的新对象
-                usernameStyle:{}
+                usernameStyle:{},
+                role:'1',
+                roleList:[
+                    {value:'1',label:'我是dancer'},
+                    {value:'2',label:'我是vocal'},
+                    {value:'3',label:'我是rapper'}
+                ]
             },
             methods:{
                 handleFocus: function(){
@@ -65,21 +85,25 @@
                 },
                 btnClick: function(){
                     console.log("我是里面的按钮单机事件");
-                    this.isLogining = true
                     //模拟发起请求，两秒后返回结果
+                    this.isLogining = true
+                    var that = this;
                     setTimeout(function(){
-                        //this永远指向调用者，所以这里不是vue对象在调用，而是window对象在调用
-                        // 所以这里写成：window.setTimeout(function(){})也是可以的
-                        this.errMsg = '登陆失败，请检查密码';
-                        this.isLogining = false;
-                        alert(errMsg);
-                        alert(this.errMsg);
-                        // 在这个地方加不加this是一样的，因为不加的话会默认加上一个this,所以加不加this都可以成功显示，默认加this好想是vue的特性。
-                        // 因为this永远指向当前的调用者
 
+                        alert();
+                        // 为了修改vue的参数，所以通过vue.的方式来调用参数，修改参数值，但是这不是常见的方法
+                        //这里就出现了 var _this = this的大法，也就是说把原本指向window的this拉回来指向vue对象
+                        vue.errMsg = '我是修改后的报错信息';
+                        vue.isLogining = false;
+                
                     },2000);
                 }
+            },
+            components:{
+            'coolBtn':{
+                template:" <input  value='按钮名称' type='button' style=\"background: deepskyblue; color: #fff; border: none;padding: 2px 10px;border-radius: 10px; margin: 2px 6px;\">"
             }
+        },
         })
     </script>
 </body>

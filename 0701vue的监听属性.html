@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script type="text/javascript" src="./defaultBtn.js"></script>
+
+    <style>
+        .progress{
+            display: inline-block;
+            background-color: red;
+            width: 0px;
+            height: 18px;
+        }
+        .primary {background: #409eff;}
+        .danger {background: #f56c6c;}
+        .success {background: #67c23a;}
+        .warning {background: #e6a23c;}
+    </style>
+</head>
+<body>
+    <div id="count">
+        <h2>{{msg}}({{progressNum}}%)</h2>
+        <span class="progress" :style="spanStyle"></span>
+        <br>
+        <success-btn @btn-click="addProgress" :type="'warning'" :name="'增加进度'" ></success-btn>
+    </div>
+    <script>
+        var app = new Vue({
+            el:'#count',
+            data:{
+              msg:'加油我看好你哦！',
+              progressNum: 0,
+              spanStyle:{}
+            },
+            watch:{
+                progressNum:function(val){
+                    if(this.progressNum >= 100){
+                        this.progressNum=100;
+                        this.msg = '大功告成啦';
+                        return;
+                    }
+                    var background = 'red';
+
+                    if(this.progressNum>=80){
+                        background = 'green';
+                        this.msg='还差一点啦！'
+                    }else if(this.progressNum>=50){
+                        background = 'orange';
+                        this.msg = '积累积累';
+
+                    }
+                    this.spanStyle ={
+                        width:this.progressNum + 'px',
+                        background:background,
+                    }
+                }
+            },
+            methods:{
+                addProgress:function(){
+                    this.progressNum += 10;
+                  
+                }
+            },
+            computed:{
+               
+            }
+        })
+    </script>
+</body>
+</html>

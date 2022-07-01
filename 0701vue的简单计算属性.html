@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+</head>
+<body>
+    <div id="count">
+        请输入商品价格：
+        <input type="number" name="" id="" v-model="price"><br>
+        请选择商品折扣：
+        <select name="" id="" v-model="discount">
+            <option v-for='item,index in discountList' :value="item.value" >{{item.label}}</option>
+        </select><br>
+        成交价：{{payment}}
+    </div>
+    <script>
+        document.write(Date()+'----------------------------')
+        var today = new Date();
+        document.write(today.getMonth()+'----------------------------')
+        document.write(today.getDate())
+
+
+        var app = new Vue({
+            el:'#count',
+            data:{
+                price:0,
+                discount:0.9,
+                discountList:[
+                    {value:'0.9',label:'9折'},
+                    {value:'0.8',label:'8折'},
+                    {value:'0.7',label:'7折'},
+                ]
+            },
+            methods:{
+              
+            },
+            computed:{
+                payment:function(){
+                    var today = new Date();
+                    var month = today.getMonth()+1;
+                    var day = today.getDate();
+
+                    var rebate = 0;
+                    if(month==7 && day==1){
+                        if(this.price>=400){
+                            rebate = 150;
+                        }else if(this.price >=200){
+                            rebate = 50;
+                        }
+                    }
+                    return this.price*this.discount - rebate;
+                }
+            }
+        })
+    </script>
+</body>
+</html>
